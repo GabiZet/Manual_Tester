@@ -1,31 +1,21 @@
+import java.util.Scanner;
+
 public class HelloWorld4 {
     public static void main(String[] args) {
         HelloWorld4 helloWorld1 = new HelloWorld4();
         helloWorld1.printHello();
     }
 
-    private String getHelloMessage(int jezyk) {
-        if (jezyk == 0) {
-            return "Witaj Świecie!";
-        } else if (jezyk == 1) {
-            return "Hello world!";
-        }
-        else {
-            return "Język nieznany!";
-
-        }
-    }
-
-    private String getHelloMessageSwitch(int jezyk) {
-        String powitanie = "abc";
+    private String getHelloMessageSwitch(String jezyk) {
+        String powitanie;
         switch (jezyk) {
-            case 0:
+            case "pl":
                 powitanie = "Witaj Świecie!";
                 break;
-            case 1:
-                powitanie = "Hello world!";
+            case "en":
+                powitanie = "Hello World";
                 break;
-            case 5:
+            case "cs":
                 powitanie = "cos";
                 break;
             default:
@@ -34,9 +24,24 @@ public class HelloWorld4 {
         return powitanie;
     }
 
+    private boolean powitanieDluzszeNiz3(String powitanie) {
+        String komunikat = (powitanie.length() > 3) ? "Większe" : "Mniejsze";
+
+        System.out.println(komunikat);
+        return powitanie.length() > 3;
+    }
+
     private void printHello() {
-        System.out.println(getHelloMessageSwitch(0));
-//        System.out.println(getHelloMessageSwitch(1));
-//        System.out.println(getHelloMessageSwitch(222));
+        System.out.println("Prosze podaj slowo");
+        String wartoscUzytkownika = new Scanner(System.in).nextLine();
+        if (powitanieDluzszeNiz3(wartoscUzytkownika)) {
+            System.out.println("Twoje slowo jest dluzsze niz 3");
+        } else {
+            System.out.println("Twoje slowo jest krotsze niz 3");
+        }
+        powitanieDluzszeNiz3("wartoscUzytkownika");
+//        System.out.println(getHelloMessageSwitch("pl"));
+//        System.out.println(getHelloMessageSwitch("en"));
+//        System.out.println(getHelloMessageSwitch("cs"));
     }
 }
